@@ -1,3 +1,11 @@
+function getRandomRgb() {
+  var num = Math.round(0xffffff * Math.random());
+  var r = num >> 16;
+  var g = num >> 8 & 255;
+  var b = num & 255;
+  return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+}
+
 function createGridLines(num){
   for (i=0; i<num; i++){
     let newRow = document.createElement("div")
@@ -19,7 +27,7 @@ function createGridBoxes(num){
 function fillColour(){
   for (const box of GridBox){
     box.addEventListener("mouseover", function(){
-    box.classList.add("coloured")
+    box.style.backgroundColor = getRandomRgb()
   })
   }
 }
